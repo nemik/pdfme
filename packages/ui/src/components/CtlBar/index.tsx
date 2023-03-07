@@ -26,7 +26,7 @@ const CtlBar = (props: Props) => {
           justifyContent: 'center',
           position: 'sticky',
           zIndex: 1,
-          top: '90%',
+          top: '95%',
           left: `calc(50% - ${width / 2}px)`,
           width,
           background: '#777777e6',

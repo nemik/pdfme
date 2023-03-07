@@ -77,7 +77,7 @@ const SelectSet = (props: {
   const { label, value, options, onChange } = props;
 
   return (
-    <div style={{ width: '45%' }}>
+    <div style={{ width: '45%' }} className="mx-7">
       <label>{label}:</label>
       <select style={selectStyle} onChange={onChange} value={value}>
         {options.map((o) => (
