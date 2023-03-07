@@ -108,7 +108,7 @@ const Sidebar = (props: SidebarProps) => {
             <button
               style={{
                 padding: '0.5rem',
-                background: '#18a0fb',
+                background: 'black',
                 border: 'none',
                 borderRadius: 2,
                 cursor: 'pointer',
