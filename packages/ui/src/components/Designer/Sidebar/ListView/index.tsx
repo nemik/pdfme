@@ -69,16 +69,12 @@ const ListView = (
       )}
 
       <div
-        style={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          cursor: 'pointer',
-          fontSize: '0.75rem',
-        }}
-      >
+        className='inset-x-0 text-sm space-x-1.5'>
         {isBulkUpdateFieldNamesMode ? (
           <>
-            <u
+            <button
+              type="button"
+              className="rounded bg-slate-600 py-1 px-2 text-xs font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
               onClick={() => {
                 const names = fieldNamesValue.split('\n');
                 if (names.length !== schemas.length) {
@@ -96,19 +92,25 @@ const ListView = (
               }}
             >
               {i18n('commitBulkUpdateFieldName')}
-            </u>
-            <span style={{ margin: '0 1rem' }}>/</span>
-            <u onClick={() => setIsBulkUpdateFieldNamesMode(false)}>{i18n('cancel')}</u>
+            </button>
+
+            <button
+              type="button"
+              className="rounded bg-slate-600 py-1 px-2 text-xs font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+              onClick={() => setIsBulkUpdateFieldNamesMode(false)}>{i18n('cancel')}</button>
           </>
         ) : (
-          <u
+          <button
+            type="button"
+            className="rounded bg-slate-600 py-1 px-2 text-xs font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
+
             onClick={() => {
               setFieldNamesValue(schemas.map((s) => s.key).join('\n'));
               setIsBulkUpdateFieldNamesMode(true);
             }}
           >
             {i18n('bulkUpdateFieldName')}
-          </u>
+          </button>
         )}
       </div>
       <Divider />
