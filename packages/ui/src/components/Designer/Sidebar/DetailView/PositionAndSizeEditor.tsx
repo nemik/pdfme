@@ -3,25 +3,6 @@ import { SchemaForUI } from '@pdfme/common';
 import { round } from '../../../../helper';
 import { SidebarProps } from '../index';
 
-const inputSetStyle: CSSProperties = { marginRight: '1rem', display: 'flex', alignItems: 'center' };
-
-const inputStyle: CSSProperties = {
-  width: 70,
-  border: '1px solid #767676',
-  borderRadius: 2,
-  color: '#333',
-  background: 'none',
-};
-
-const buttonStyle: CSSProperties = {
-  display: 'flex',
-  background: 'none',
-  alignItems: 'center',
-  borderRadius: 2,
-  border: '1px solid rgb(118, 118, 118)',
-  cursor: 'pointer',
-};
-
 const svgBaseProp = {
   style: { width: '100%', height: '100%' },
   xmlns: 'http://www.w3.org/2000/svg',
@@ -185,21 +166,23 @@ const PositionAndSizeEditor = (
 
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
-        {layoutBtns.map((b) => (
-          <button key={b.id} title={b.id} onClick={b.action} style={buttonStyle}>
-            <object width={15} height={15}>
-              {b.icon}
-            </object>
-          </button>
-        ))}
+      <div>
+        <div className='flex space-x-4'>
+          {layoutBtns.map((b) => (
+            <button key={b.id} title={b.id} onClick={b.action}>
+              <object width={25} height={25}>
+                {b.icon}
+              </object>
+            </button>
+          ))}
+        </div>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={inputSetStyle}>
-          <label style={{ width: 17 }}>X</label>
+      <div className='my-3 grid grid-cols-2 gap-4'>
+        <div className="inline-flex">
+          <label className='mr-2'>X</label>
           <input
-            style={inputStyle}
             type="number"
+            className="border px-3 text-slate-darkest w-24"
             onChange={(e) => {
               const value = Number(e.target.value);
               if (value >= 0 && activeSchema.width + value < pageSize.width) {
@@ -208,13 +191,13 @@ const PositionAndSizeEditor = (
             }}
             value={activeSchema.position.x}
           />
-          <span style={{ fontSize: '0.6rem' }}>mm</span>
+          <span className='text-sm mx-3'>mm</span>
         </div>
-        <div style={inputSetStyle}>
-          <label style={{ width: 17 }}>Y</label>
+        <div className="inline-flex">
+          <label className='mr-2'>Y</label>
           <input
-            style={inputStyle}
             type="number"
+            className="border px-3 text-slate-darkest w-24"
             onChange={(e) => {
               const value = Number(e.target.value);
               if (value >= 0 && activeSchema.height + value < pageSize.height) {
@@ -223,15 +206,14 @@ const PositionAndSizeEditor = (
             }}
             value={activeSchema.position.y}
           />
-          <span style={{ fontSize: '0.6rem' }}>mm</span>
+          <span className='text-sm mx-3'>mm</span>
         </div>
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={inputSetStyle}>
-          <label style={{ width: 17 }}>W</label>
+
+        <div className="inline-flex">
+          <label className='mr-2'>W</label>
           <input
-            style={inputStyle}
             type="number"
+            className="border px-3 text-slate-darkest w-24"
             onChange={(e) => {
               const value = Number(e.target.value);
               if (value >= 0 && activeSchema.position.x + value < pageSize.width) {
@@ -240,13 +222,13 @@ const PositionAndSizeEditor = (
             }}
             value={activeSchema.width}
           />
-          <span style={{ fontSize: '0.6rem' }}>mm</span>
+          <span className='text-sm mx-3'>mm</span>
         </div>
-        <div style={inputSetStyle}>
-          <label style={{ width: 17 }}>H</label>
+        <div className="inline-flex">
+          <label className='mr-2'>H</label>
           <input
-            style={inputStyle}
             type="number"
+            className="border px-3 text-slate-darkest w-24"
             onChange={(e) => {
               const value = Number(e.target.value);
               if (value >= 0 && activeSchema.position.y + value < pageSize.height) {
@@ -255,7 +237,7 @@ const PositionAndSizeEditor = (
             }}
             value={activeSchema.height}
           />
-          <span style={{ fontSize: '0.6rem' }}>mm</span>
+          <span className='text-sm mx-3'>mm</span>
         </div>
       </div>
     </div>
