@@ -178,6 +178,10 @@ export const validateBarcodeInput = (type: BarCodeType, input: string) => {
     // 500文字以下
     return input.length < 500;
   }
+  if (type === 'gs1datamatrix') {
+    // 500文字以下
+    return input.length < 500;
+  }
   if (type === 'japanpost') {
     // 郵便番号は数字(0-9)のみ。住所表示番号は英数字(0-9,A-Z)とハイフン(-)が使用可能です。
     const regexp = /^(\d{7})(\d|[A-Z]|-)+$/;
